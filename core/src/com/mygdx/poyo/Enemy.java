@@ -22,7 +22,7 @@ public class Enemy {
         this.textureAtlas = new TextureAtlas("EnemyTexture.atlas");
         this.enemyRegion = textureAtlas.findRegion("Untitled - 1_Enemy_Idle");
         this.enemySprite = new Sprite(enemyRegion);
-        this.enemySprite.setPosition(4,0);
+        this.enemySprite.setPosition(16,5 );
         this.enemyAnimation = new Animation<TextureRegion>(0.2f,textureAtlas.findRegions("Untitled - 1_Enemy_Idle"), Animation.PlayMode.LOOP);
         this.createBody();
 
@@ -35,6 +35,14 @@ public class Enemy {
         TextureRegion enemIdleFrame = enemyAnimation.getKeyFrame(enemyIdleAnimationTime);
         batch.draw(enemIdleFrame, this.enemySprite.getX(), this.enemySprite.getY(),
                 this.enemySprite.getWidth() * PPM, this.enemySprite.getHeight() * PPM);
+        move();
+
+    }
+
+    private void move() {
+     //   this.getEnemyBody().setLinearVelocity(1 ,0);
+
+
     }
 
     private void createBody() {
@@ -60,6 +68,8 @@ public class Enemy {
 
         shape.dispose();
     }
+
+
 
     public Sprite getEnemySprite() {
         return enemySprite;

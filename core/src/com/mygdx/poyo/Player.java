@@ -48,7 +48,7 @@ public class Player extends ScreenAdapter {
         this.rightwalkAnimation = new Animation<TextureRegion>(0.1f, this.textureAtlas.findRegions("RightWalk"), Animation.PlayMode.NORMAL);
 
         this.poyoSprite = new Sprite(poyoRegion);
-        this.poyoSprite.setPosition(0, 0);
+        this.poyoSprite.setPosition(3, 10);
         createPoyoBody();
 
     }
@@ -70,6 +70,8 @@ public class Player extends ScreenAdapter {
         if (rightwalkAnimation.isAnimationFinished(animationTimeRightwalk) && getPoyoState() != PoyoState.RIGHTWALK) {
             animationTimeRightwalk = 0;
         }
+
+
 
 
 
@@ -130,7 +132,7 @@ public class Player extends ScreenAdapter {
             poyoBody.applyLinearImpulse(-0.025f, 0, poyoBody.getPosition().x, poyoBody.getPosition().y, true);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && poyoBody.getLinearVelocity().y == 0.0f) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && poyoBody.getLinearVelocity().y > -0.1 && poyoBody.getLinearVelocity().y < 0.5  ) {
             poyoBody.applyLinearImpulse(0, 1.2f, poyoBody.getPosition().x, poyoBody.getPosition().y, true);
         }
     }
